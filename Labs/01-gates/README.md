@@ -6,7 +6,7 @@ https://github.com/xruine00/Digital-electronics-1
 
 ## De Morgan's laws
 
-Equations for the implementation of gates.
+**Equations for the implementation of gates.**
 
 ![Logic functions](Images/equations.png)
 
@@ -22,9 +22,11 @@ The truth table:
 | 1 | 1 | 0 | 0 |
 | 1 | 1 | 1 | 0 |
 
+**Screenshot with time waveforms:**
+
 ![Time waveforms](Images/time_waveforms.PNG)
 
-Defined functions in VHDL:
+**Defined functions in VHDL:**
 ```vhdl
 architecture dataflow of gates is
 begin
@@ -35,6 +37,6 @@ begin
 end architecture dataflow;
 ```
 
-Link to the EDA Playground:
+**Link to the EDA Playground:**
 
 https://www.edaplayground.com/x/QuTC
