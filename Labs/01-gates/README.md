@@ -10,7 +10,7 @@ https://github.com/xruine00/Digital-electronics-1
 
 ![Logic functions](Images/equations.png)
 
-The truth table:
+**The truth table:**
 | **c** | **b** |**a** | **f(c,b,a)** |
 | :-: | :-: | :-: | :-: |
 | 0 | 0 | 0 | 1 |
