@@ -31,19 +31,20 @@ https://github.com/xruine00/Digital-electronics-1
 architecture dataflow of gates is
 begin
     f_o     <= ((not b_i) and a_i) or ((not c_i) and (not b_i));
-    fnand_o <= ((not b_i) nand a_i) nand ((not c_i) nand (not b_i));
-    fnor_o  <= (b_i nor (not a_i)) or (c_i nor b_i);
+    fnand_o <= ((b_i nand b_i) nand a_i) nand ((c_i nand c_i) nand (b_i nand b_i));
+    fnor_o  <= ((b_i nor (a_i nor a_i)) nor (c_i nor b_i)) nor ((b_i nor (a_i nor a_i)) nor (c_i nor b_i));
 
 end architecture dataflow;
 ```
 
 **Link to the EDA Playground:**
 
-https://www.edaplayground.com/x/QuTC
+https://www.edaplayground.com/x/ezmf
 
 ## Distributive laws
 
 **Equations for the implementation of gates:**
+
 ![Logic functions](Images/DLequations.png)
 
 **The truth table for f1 and f2:**
