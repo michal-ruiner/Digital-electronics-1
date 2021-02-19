@@ -1,6 +1,8 @@
-#LAB02 - Combinational logic
+# LAB02 - Combinational logic
 
-## 2-bit comparator truth table
+## Preparation tasks
+
+### 2-bit comparator truth table
 
 | **Dec. equivalent** | **B[1:0]** | **A[1:0]** | **B is greater than A** | **B equals A** | **B is less than A** |
 | :-: | :-: | :-: | :-: | :-: | :-: |
