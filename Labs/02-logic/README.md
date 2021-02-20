@@ -2,7 +2,7 @@
 
 ## Preparation tasks
 
-### 2-bit comparator truth table
+### 2-bit comparator truth table:
 
 | **Dec. equivalent** | **B[1:0]** | **A[1:0]** | **B is greater than A** | **B equals A** | **B is less than A** |
 | :-: | :-: | :-: | :-: | :-: | :-: |
@@ -27,3 +27,21 @@
 ### Canonical SoP (Sum of Products) and PoS (Product of Sums) forms for "equals" and "less than" functions:
 
 ![SoP_PoS](Images/equations.png)
+
+## 2-bit comparator
+
+### Karnaugh map for B is greater than A:
+
+![B_greater_A](Images/BgreaterA.PNG)
+
+### Karnaugh map for B equals A:
+
+![B_equals_A](Images/BequalsA.PNG)
+
+### Karnaugh map for B is less than A:
+
+![B_less_A](Images/BlessA.PNG)
+
+### Link to EDA Playground:
+
+https://www.edaplayground.com/x/G2nP
