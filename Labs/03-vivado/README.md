@@ -188,7 +188,18 @@ p_stimulus : process
 
 ![constraints_file](Images/constraints_file.png)
 
-3. In the *Add of Create Constraints* we select *Create File* and than fill in the **board name** as *File name* and select *OK*, then *Finish*.
+3. In the *Add of Create Constraints* we select *Create File* and then fill in the **board name** as *File name* and select *OK*, then *Finish*.
+
+4. We open the newly created file and paste in the content from **step 1**.
+
+5. We assign signals to pins.
+  - Everything that begins with **#** is comment. To make a line code, we have to remove the # symbol.
+
+  - **We map input signal to switches and output signals to LEDs.**
+
+  - Each signal has to have own pin (e.g. 2-bit input A has to have *a_i[0]* mapped to *SW0* and *a_i[1]* mapped to *SW1*)
+
+  ![xdc_file](Images/xdc_file.png)
 
 ### Running simulation
 
