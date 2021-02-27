@@ -142,57 +142,57 @@ p_stimulus : process
 
 ![add_constraints](Images/add_constraints.png)
 
-7. In the *Default Part* we select the type of FPGA we´re gonna use or one of the prepared boards, where everything is already set (I/O pins...). We select Nexys A7-50T.
+**7.** In the *Default Part* we select the type of FPGA we´re gonna use or one of the prepared boards, where everything is already set (I/O pins...). We select Nexys A7-50T.
 
 ![default_part](Images/default_part.png)
 
-8. In the last tab *New Project Summary* is a brief overview of what we have selected in the previous steps. After clicking on *Finish* the project will be created.
+**8.** In the last tab *New Project Summary* is a brief overview of what we have selected in the previous steps. After clicking on *Finish* the project will be created.
 
 ![project_summary](Images/project_summary.png)
 
-9. In the *Define Module* we select the *Entity name* and *Architecture name*. Basically, we can leave it on the default settings. There is no need to specify *I/O Port Definitions* as we will specify it in the source code.
+**9.** In the *Define Module* we select the *Entity name* and *Architecture name*. Basically, we can leave it on the default settings. There is no need to specify *I/O Port Definitions* as we will specify it in the source code.
 
 ![define_module](Images/define_module.png)
 
-10. Click on *Yes* when asked to use the values that didn´t change.
+**10.** Click on *Yes* when asked to use the values that didn´t change.
 
 ![use_values](Images/use_values.png)
 
 ### Adding source file
 
-1. To add a new source file click on *File* -> *Add Sources...*
+**1.** To add a new source file click on *File* -> *Add Sources...*
 
 ![add_sources](Images/add_sources.png)
 
 ### Adding testbench file
 
-1. To add a testbench file, we have to choose **simulation sources** from the *Add Sources* tab. Then click *next*.
+**1.** To add a testbench file, we have to choose **simulation sources** from the *Add Sources* tab. Then click *next*.
 
 ![simulation_sources](Images/simulation_sources.png)
 
-2. Now the process of creating file is the same as in the **step 5 of Project creation**, except we will add **tb_** to the beginning of the *entity name*.
+**2.** Now the process of creating file is the same as in the **step 5 of Project creation**, except we will add **tb_** to the beginning of the *entity name*.
 
 ![testbench_file](Images/testbench_file.png)
 
-3. Still there is no need to specify *I/O Port Definitions* as we will specify it in the source code (same as in the **step 9 of Project creation**).
+**3.** Still there is no need to specify *I/O Port Definitions* as we will specify it in the source code (same as in the **step 9 of Project creation**).
 
 ![port_definitions](Images/port_definitions.png)
 
-4. Click on *Yes* when asked to use the values that didn´t change.
+**4.** Click on *Yes* when asked to use the values that didn´t change.
 
 ### Adding XDC constraints file
 
-1. From the link (https://github.com/Digilent/digilent-xdc) we select our board (Nexys-A7-50T-Master.xdc) and copy the whole content of the file.
+**1.** From the link (https://github.com/Digilent/digilent-xdc) we select our board (Nexys-A7-50T-Master.xdc) and copy the whole content of the file.
 
-2. Then we create new *constraints file*
+**2.** Then we create new *constraints file*
 
 ![constraints_file](Images/constraints_file.png)
 
-3. In the *Add of Create Constraints* we select *Create File* and then fill in the **board name** as *File name* and select *OK*, then *Finish*.
+**3.** In the *Add of Create Constraints* we select *Create File* and then fill in the **board name** as *File name* and select *OK*, then *Finish*.
 
-4. We open the newly created file and paste in the content from **step 1**.
+**4.** We open the newly created file and paste in the content from **step 1**.
 
-5. We assign signals to pins.
+**5.** We assign signals to pins.
   - Everything that begins with **#** is comment. To make a line code, we have to remove the # symbol.
 
   - **We map input signals to switches and output signals to LEDs.**
@@ -203,7 +203,7 @@ p_stimulus : process
 
 ### Running simulation
 
-1. To run a simulation, click on *Flow* -> *Run Simulation* -> *Run Behavioral Simulation*
+**1.** To run a simulation, click on *Flow* -> *Run Simulation* -> *Run Behavioral Simulation*
 
 ![run_simulation](Images/run_simulation.png)
 
