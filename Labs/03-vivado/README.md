@@ -104,7 +104,7 @@ p_stimulus : process
 
 ### Project creation
 
-1. Select create Project
+**1.** Select create Project
 
   - 1st way
 
@@ -114,21 +114,21 @@ p_stimulus : process
 
   ![create_project1](Images/create_project1.png)
 
-2. Select next  
+**2.** Select next  
 
 ![select_next](Images/next.png)
 
-3. Select a name of a project and location, where the project will be saved. Leave the *Create project subdirectory* checked.
+**3.** Select a name of a project and location, where the project will be saved. Leave the *Create project subdirectory* checked.
 
 ![project_name](Images/project_name.png)
 
 **Beware of spaces and punctuation in a name. This could cause troubles!**
 
-4. Select the *RTL Project*. Basically, we will use only this option.
+**4.** Select the *RTL Project*. Basically, we will use only this option.
 
 ![project_type](Images/project_type.png)
 
-5. In the **Add Sources** tab we will add source codes (like *design.vhd* in EDA Playground).
+**5.** In the **Add Sources** tab we will add source codes (like *design.vhd* in EDA Playground).
 
   - After clicking on *Create File* the tab *Create Source File* will open. Here we select *File type* **VHDL** and insert the same name to *File name* as the entity name. Then select OK.
 
@@ -138,7 +138,7 @@ p_stimulus : process
 
   ![language](Images/language.png)
 
-6. In the *Add Constraints (optional)* we can specify, which signals will be connected to which pins (can be added later). When we don´t have real HW, we don´t need to add any constraints.
+**6.** In the *Add Constraints (optional)* we can specify, which signals will be connected to which pins (can be added later). When we don´t have real HW, we don´t need to add any constraints.
 
 ![add_constraints](Images/add_constraints.png)
 
@@ -195,7 +195,7 @@ p_stimulus : process
 5. We assign signals to pins.
   - Everything that begins with **#** is comment. To make a line code, we have to remove the # symbol.
 
-  - **We map input signal to switches and output signals to LEDs.**
+  - **We map input signals to switches and output signals to LEDs.**
 
   - Each signal has to have own pin (e.g. 2-bit input A has to have *a_i[0]* mapped to *SW0* and *a_i[1]* mapped to *SW1*)
 
