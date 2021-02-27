@@ -188,7 +188,7 @@ p_stimulus : process
 
 ![constraints_file](Images/constraints_file.png)
 
-**3.** In the *Add of Create Constraints* we select *Create File* and then fill in the **board name** as *File name* and select *OK*, then *Finish*.
+**3.** In the *Add or Create Constraints* we select *Create File* and then fill in the **board name** as *File name* and select *OK*, then *Finish*.
 
 **4.** We open the newly created file and paste in the content from **step 1**.
 
