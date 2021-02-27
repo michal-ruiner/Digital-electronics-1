@@ -99,3 +99,103 @@ p_stimulus : process
 ### Simulated time waveforms
 
 ![Time_waveforms](Images/time_waveforms.PNG)
+
+## Vivado tutorial
+
+### Project creation
+
+1. Select create Project
+
+  - 1st way
+
+  ![create_project](Images/create_project.png)
+
+  - 2nd way
+
+  ![create_project1](Images/create_project1.png)
+
+2. Select next  
+
+![select_next](Images/next.png)
+
+3. Select a name of a project and location, where the project will be saved. Leave the *Create project subdirectory* checked.
+
+![project_name](Images/project_name.png)
+
+**Beware of spaces and punctuation in a name. This could cause troubles!**
+
+4. Select the *RTL Project*. Basically, we will use only this option.
+
+![project_type](Images/project_type.png)
+
+5. In the **Add Sources** tab we will add source codes (like *design.vhd* in EDA Playground).
+
+  - After clicking on *Create File* the tab *Create Source File* will open. Here we select *File type* **VHDL** and insert the same name to *File name* as the entity name. Then select OK.
+
+  ![source_file](Images/source_file.png)
+
+  - Note that we should choose *Target language* and *Simulator language* to **VHDL**, even though this could be changed later in options.
+
+  ![language](Images/language.png)
+
+6. In the *Add Constraints (optional)* we can specify, which signals will be connected to which pins (can be added later). When we don´t have real HW, we don´t need to add any constraints.
+
+![add_constraints](Images/add_constraints.png)
+
+7. In the *Default Part* we select the type of FPGA we´re gonna use or one of the prepared boards, where everything is already set (I/O pins...). We select Nexys A7-50T.
+
+![default_part](Images/default_part.png)
+
+8. In the last tab *New Project Summary* is a brief overview of what we have selected in the previous steps. After clicking on *Finish* the project will be created.
+
+![project_summary](Images/project_summary.png)
+
+9. In the *Define Module* we select the *Entity name* and *Architecture name*. Basically, we can leave it on the default settings. There is no need to specify *I/O Port Definitions* as we will specify it in the source code.
+
+![define_module](Images/define_module.png)
+
+10. Click on *Yes* when asked to use the values that didn´t change.
+
+![use_values](Images/use_values.png)
+
+### Adding source file
+
+1. To add a new source file click on *File* -> *Add Sources...*
+
+![add_sources](Images/add_sources.png)
+
+### Adding testbench file
+
+1. To add a testbench file, we have to choose **simulation sources** from the *Add Sources* tab. Then click *next*.
+
+![simulation_sources](Images/simulation_sources.png)
+
+2. Now the process of creating file is the same as in the **step 5 of Project creation**, except we will add **tb_** to the beginning of the *entity name*.
+
+![testbench_file](Images/testbench_file.png)
+
+3. Still there is no need to specify *I/O Port Definitions* as we will specify it in the source code (same as in the **step 9 of Project creation**).
+
+![port_definitions](Images/port_definitions.png)
+
+4. Click on *Yes* when asked to use the values that didn´t change.
+
+### Adding XDC constraints file
+
+1. From the link (https://github.com/Digilent/digilent-xdc) we select our board (Nexys-A7-50T-Master.xdc) and copy the whole content of the file.
+
+2. Then we create new *constraints file*
+
+![constraints_file](Images/constraints_file.png)
+
+3. In the *Add of Create Constraints* we select *Create File* and than fill in the **board name** as *File name* and select *OK*, then *Finish*.
+
+### Running simulation
+
+1. To run a simulation, click on *Flow* -> *Run Simulation* -> *Run Behavioral Simulation*
+
+![run_simulation](Images/run_simulation.png)
+
+  - Another way is to click on *Run Simulation* in the side bar.
+
+  ![run_simulation1](Images/run_simulation1.png)
