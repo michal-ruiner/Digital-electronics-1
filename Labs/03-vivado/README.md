@@ -4,7 +4,7 @@
 
 ### Nexys A7 board - table of slide switches connected to I/O pins
 
-| SW | R | PIN |
+| SW | R [Ω] | PIN |
 | :-: | :-: | :-: |
 | SW0 | R35 - 10K | J15 |
 | SW1 | R37 - 10K | L16 |
@@ -25,24 +25,24 @@
 
 ### Nexys A7 board - table of LEDS connected to I/O pins
 
-| LED | R | PIN |
-| :-: | :-: | :-: |
-| LED0 | R33 - 330 | H17 |
-| LED1 | R34 - 330 | K15 |
-| LED2 | R36 - 330 | J13 |
-| LED3 | R39 - 330 | N14 |
-| LED4 | R41 - 330 | R18 |
-| LED5 | R44 - 330 | V17 |
-| LED6 | R47 - 330 | U17 |
-| LED7 | R50 - 330 | U16 |
-| LED8 | R52 - 330 | V16 |
-| LED9 | R54 - 330 | T15 |
-| LED10 | R57 - 330 | U14 |
-| LED11 | R65 - 330 | T16 |
-| LED12 | R67 - 330 | V15 |
-| LED13 | R70 - 330 | V14 |
-| LED14 | R72 - 330 | V12 |
-| LED15 | R74 - 330 | V11 |
+| LED | R [Ω] | PIN | V connect |
+| :-: | :-: | :-: | :-: |
+| LED0 | R33 - 330 | H17 | Active High |
+| LED1 | R34 - 330 | K15 | Active High |
+| LED2 | R36 - 330 | J13 | Active High |
+| LED3 | R39 - 330 | N14 | Active High |
+| LED4 | R41 - 330 | R18 | Active High |
+| LED5 | R44 - 330 | V17 | Active High |
+| LED6 | R47 - 330 | U17 | Active High |
+| LED7 | R50 - 330 | U16 | Active High |
+| LED8 | R52 - 330 | V16 | Active High |
+| LED9 | R54 - 330 | T15 | Active High |
+| LED10 | R57 - 330 | U14 | Active High |
+| LED11 | R65 - 330 | T16 | Active High |
+| LED12 | R67 - 330 | V15 | Active High |
+| LED13 | R70 - 330 | V14 | Active High |
+| LED14 | R72 - 330 | V12 | Active High |
+| LED15 | R74 - 330 | V11 | Active High |
 
 ## Two-bit wide 4-to-1 multiplexer
 
@@ -75,7 +75,7 @@ p_stimulus : process
         s_b   <= "01"; wait for 100 ns;
 
         s_sel <= "01"; wait for 100 ns;
-        s_c   <= "00"; wait for 100 ns;
+        s_c   <= "10"; wait for 100 ns;
         s_b   <= "11"; wait for 100 ns;
 
         s_d   <= "10"; s_c <= "11"; s_b <= "01"; s_a <= "00";
@@ -104,7 +104,7 @@ p_stimulus : process
 
 ### Project creation
 
-**1.** Select create Project
+**1.** Select *Create Project*
 
   - 1st way
 
@@ -170,7 +170,7 @@ p_stimulus : process
 
 ![simulation_sources](Images/simulation_sources.png)
 
-**2.** Now the process of creating file is the same as in the **step 5 of Project creation**, except we will add **tb_** to the beginning of the *entity name*.
+**2.** Now the process of creating file is the same as in the **step 5 of Project creation**, except we will add `tb_` to the beginning of the *entity name*.
 
 ![testbench_file](Images/testbench_file.png)
 
@@ -188,16 +188,16 @@ p_stimulus : process
 
 ![constraints_file](Images/constraints_file.png)
 
-**3.** In the *Add or Create Constraints* we select *Create File* and then fill in the **board name** as *File name* and select *OK*, then *Finish*.
+**3.** In the *Add or Create Constraints* we select *Create File* and then fill in the **board name** as *File name* and select *OK*, then *Finish* (the only available `File type` is **XDC**).
 
 **4.** We open the newly created file and paste in the content from **step 1**.
 
 **5.** We assign signals to pins.
-  - Everything that begins with **#** is comment. To make a line code, we have to remove the # symbol.
+  - Everything that begins with **#** is a comment. To make a line code, we have to remove the # symbol.
 
   - **We map input signals to switches and output signals to LEDs.**
 
-  - Each signal has to have own pin (e.g. 2-bit input A has to have *a_i[0]* mapped to *SW0* and *a_i[1]* mapped to *SW1*)
+  - Each signal has to have own pin (e.g. 2-bit input A has to have `a_i[0]` mapped to `SW0` and `a_i[1]` mapped to `SW1`).
 
   ![xdc_file](Images/xdc_file.png)
 
