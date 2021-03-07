@@ -145,7 +145,7 @@ p_stimulus : process
 
 ### Simulated time waveforms
 
-![Time waveforms](Images/time_waveforms.PNG)
+![Time waveforms](Images/SStime_waveforms.PNG)
 
 ### VHDL code from source file `top.vhd` with 7-segment module instantiation
 
@@ -188,3 +188,30 @@ p_stimulus : process
 | d | 1101 | 0 | 1 | 1 | 0 |
 | E | 1110 | 0 | 1 | 0 | 0 |
 | F | 1111 | 0 | 1 | 1 | 0 |
+
+### VHDL code for LEDs(7:4)
+
+```vhdl
+        -- LED(7:4) indicators
+        -- Turn LED(4) on if input value is equal to 0, ie "0000"
+        -- WRITE YOUR CODE HERE
+        LED(4) <= '1' when (SW = "0000") else
+                  '0';
+
+        -- Turn LED(5) on if input value is greater than "1001", ie 9
+        -- WRITE YOUR CODE HERE
+          LED(5) <= (SW(3) and SW(1)) or (SW(3) and SW(2));
+
+        -- Turn LED(6) on if input value is odd, ie 1, 3, 5, ...
+        -- WRITE YOUR CODE HERE
+          LED(6) <= SW(0);
+
+        -- Turn LED(7) on if input value is a power of two, ie 1, 2, 4, or 8
+        -- WRITE YOUR CODE HERE
+        LED(7) <= '1' when (SW = "0001" or SW = "0010" or SW = "0100" or SW = "1000") else
+                  '0';
+```
+
+### Simulated time waveforms
+
+![Time waveforms](Images/LEDtime_waveforms.PNG)
