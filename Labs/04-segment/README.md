@@ -10,9 +10,9 @@
 
   - Logic 1 value prevents the current to flow through a transistor to 7-seg display.
 
-  - In the SEGMENT column, the value 0 means rightmost and 7 means leftmost.
+  - In the DISPLAY column, the value 0 means rightmost and 7 means leftmost.
 
-| AND | PIN | SEGMENT |
+| AND | PIN | DISPLAY |
 | :-: | :-: | :-: |
 | AN0 | J17 | 0 |
 | AN1 | J18 | 1 |
