@@ -4,18 +4,30 @@
 
 ### Nexys A7 anode table
 
-| AND | PIN |
-| :-: | :-: |
-| AN0 | J17 |
-| AN1 | J18 |
-| AN2 | T9 |
-| AN3 | J14 |
-| AN4 | P14 |
-| AN5 | T14 |
-| AN6 | K2 |
-| AN7 | U13 |
+  - 7-seg displays have common anode each.
+
+  - Logic 0 value allows the current to flow through a transistor to 7-seg display.
+
+  - Logic 1 value prevents the current to flow through a transistor to 7-seg display.
+
+  - In the SEGMENT column, the value 0 means rightmost and 7 means leftmost.
+
+| AND | PIN | SEGMENT |
+| :-: | :-: | :-: |
+| AN0 | J17 | 0 |
+| AN1 | J18 | 1 |
+| AN2 | T9 | 2 |
+| AN3 | J14 | 3 |
+| AN4 | P14 | 4 |
+| AN5 | T14 | 5 |
+| AN6 | K2 | 6 |
+| AN7 | U13 | 7 |
 
 ### Nexys A7 cathode table
+
+  - Logic 0 value allows the current to flow through the LEDs in 7-seg display.
+
+  - Logic 1 value prevents the current to flow through the LEDs in 7-seg display.
 
 | CTD | PIN |
 | :-: | :-: |
