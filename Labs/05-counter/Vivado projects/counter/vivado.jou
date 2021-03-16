@@ -1,0 +1,42 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Sun Mar 14 10:14:35 2021
+# Process ID: 10124
+# Current directory: H:/Vivado/counter
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent18200 H:\Vivado\counter\counter.xpr
+# Log file: H:/Vivado/counter/vivado.log
+# Journal file: H:/Vivado/counter\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project H:/Vivado/counter/counter.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+source tb_cnt_up_down.tcl
+relaunch_sim
+relaunch_sim
+close_sim
+launch_simulation
+source tb_cnt_up_down.tcl
+relaunch_sim
+relaunch_sim
+relaunch_sim
+close_sim
+launch_simulation
+source tb_cnt_up_down.tcl
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+close_sim
