@@ -8,7 +8,7 @@
   - When pressed, logic high voltage is applied to their respective I/O pin.
   - When not pressed, logic low voltage is applied to their respective I/O pin.
 
-| **Button** | *Pin** |
+| **Button** | **Pin** |
    | :-: | :-: |
    | BTNL | P17 |
    | BTNR | M17 |
@@ -25,7 +25,7 @@
    | 10&nbsp;ms | 1 000 000 | `x"f_4240"` | `b"1111_0100_0010_0100_0000"` |
    | 250&nbsp;ms | 25 000 000 | `x"17d_7840"` | `b"0001_0111_1101_0111_1000_0100_0000"` |
    | 500&nbsp;ms | 50 000 000 | `x"2fa_f080"` | `b"0010_1111_1010_1111_0000_1000_0000"` |
-   | 1&nbsp;sec | 100 000 000 | `x"5F5_E100"` | `b"0101_1111_0101_1110_0001_0000_0000"` |
+   | 1&nbsp;sec | 100 000 000 | `x"5f5_e100"` | `b"0101_1111_0101_1110_0001_0000_0000"` |
 
 ## Bidirectional counter
 
@@ -33,25 +33,25 @@
 
 ```vhdl
 p_cnt_up_down : process(clk)
-    begin
-        if rising_edge(clk) then
+   begin
+       if rising_edge(clk) then
 
-            if (reset = '1') then               -- Synchronous reset
-                s_cnt_local <= (others => '0'); -- Clear all bits
+           if (reset = '1') then               -- Synchronous reset
+               s_cnt_local <= (others => '0'); -- Clear all bits
 
-            elsif (en_i = '1') then       -- Test if counter is enabled
+           elsif (en_i = '1') then       -- Test if counter is enabled
 
-                -- TEST COUNTER DIRECTION HERE
-                if (cnt_up_i = '1') then
-                    s_cnt_local <= s_cnt_local + 1;
+               -- TEST COUNTER DIRECTION HERE
+               if (cnt_up_i = '1') then
+                   s_cnt_local <= s_cnt_local + 1;
 
-                elsif (cnt_up_i = '0') then
-                    s_cnt_local <= s_cnt_local - 1;   
+               else
+                   s_cnt_local <= s_cnt_local - 1;   
 
-                end if;    
-            end if;
-        end if;
-    end process p_cnt_up_down;
+               end if;    
+           end if;
+       end if;
+end process p_cnt_up_down;
 ```
 
 ### VHDL reset and stimulus processes from testbench file `tb_cnt_up_down.vhd`
@@ -107,13 +107,16 @@ p_cnt_up_down : process(clk)
 
 ### Screenshot with simulated time waveforms
 
-![Time waveforms](Images/part1.PNG)
+  - 0-260 ns
 
-![Time waveforms](Images/part2.PNG)
+  ![Time waveforms](Images/part1.PNG)
 
-![Time waveforms](Images/part3.PNG)
+  - 260-520 ns
 
-![Time waveforms](Images/part4.PNG)
+  ![Time waveforms](Images/part2.PNG)
+
+  - 520-760 ns
+  ![Time waveforms](Images/part3.PNG)
 
 ## Top level
 
@@ -171,4 +174,4 @@ p_cnt_up_down : process(clk)
 
 ### Image of the top layer including both counters
 
-!!!**COMING SOON**!!!
+![Schema](Images/schema.PNG)
