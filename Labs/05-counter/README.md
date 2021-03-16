@@ -105,14 +105,12 @@ end process p_cnt_up_down;
     end process p_stimulus;
 ```
 
-### Screenshot with simulated time waveforms
+### Screenshots with simulated time waveforms
 
   - 0-260 ns
-
   ![Time waveforms](Images/part1.PNG)
 
   - 260-520 ns
-
   ![Time waveforms](Images/part2.PNG)
 
   - 520-760 ns
