@@ -141,15 +141,6 @@ begin
         wait for 359 ns;
         assert(s_seg_o = "0010010")
         report "Test failed for reset value 0" severity error;
-
-        s_reset <= '1';
-        wait for 15 ns;
-        assert(s_seg_o = "0001111")
-        report "Test failed for reset value 1" severity error;
-
-        s_reset <= '0';
-        assert(s_seg_o = "0001111")
-        report "Test failed for reset value 0" severity error;
         wait;
     end process p_reset_gen;
     --------------------------------------------------------------------
@@ -165,18 +156,34 @@ begin
         s_data1_i <= "0100";
         s_data0_i <= "0010";
         s_dp_i    <= "0111";
-        wait for 428 ns;
-        assert(s_seg_o = "0010010")
-        report "Test failed for value 3.142" severity error;
 
-        s_data3_i <= "1111";
-        s_data2_i <= "1010";
-        s_data1_i <= "0001";
-        s_data0_i <= "0111";
-        s_dp_i    <= "1011";
-        wait for 260 ns;
-        assert(s_seg_o = "0001000")
-        report "Test failed for value FA.17" severity error;
+        wait for 145 ns;
+        assert(s_seg_o = "0000110" and s_dig_o = "0111")
+        report "Test failed for value 3" severity error;
+
+        assert(s_dp_o = '0')
+        report "Test failed for a dot during the value 3" severity error;
+
+        wait for 40 ns;
+        assert(s_seg_o = "1001111" and s_dig_o = "1011")
+        report "Test failed for value 1" severity error;
+
+        assert(s_dp_o = '1')
+        report "Test failed for a dot during the value 1" severity error;
+
+        wait for 40 ns;
+        assert(s_seg_o = "1001100" and s_dig_o = "1101")
+        report "Test failed for value 4" severity error;
+
+        assert(s_dp_o = '1')
+        report "Test failed for a dot during the value 4" severity error;
+
+        wait for 40 ns;
+        assert(s_seg_o = "0010010" and s_dig_o = "1110")
+        report "Test failed for value 2" severity error;
+
+        assert(s_dp_o = '1')
+        report "Test failed for a dot during the value 2" severity error;
 
         report "Stimulus process finished" severity note;
         wait;
