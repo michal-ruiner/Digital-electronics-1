@@ -1,0 +1,9 @@
+0.7
+2020.2
+Nov 18 2020
+09:47:47
+H:/Vivado/display_driver/display_driver.srcs/sim_1/new/tb_driver_7seg_4digits.vhd,1616521028,vhdl,,,,tb_driver_7seg_4digits,,,,,,,,
+H:/Vivado/display_driver/display_driver.srcs/sources_1/new/clock_enable.vhd,1615551075,vhdl,H:/Vivado/display_driver/display_driver.srcs/sources_1/new/driver_7seg_4digits.vhd,,,clock_enable,,,,,,,,
+H:/Vivado/display_driver/display_driver.srcs/sources_1/new/cnt_up_down.vhd,1615901410,vhdl,H:/Vivado/display_driver/display_driver.srcs/sources_1/new/driver_7seg_4digits.vhd,,,cnt_up_down,,,,,,,,
+H:/Vivado/display_driver/display_driver.srcs/sources_1/new/driver_7seg_4digits.vhd,1615996415,vhdl,H:/Vivado/display_driver/display_driver.srcs/sim_1/new/tb_driver_7seg_4digits.vhd,,,driver_7seg_4digits,,,,,,,,
+H:/Vivado/display_driver/display_driver.srcs/sources_1/new/hex_7seg.vhd,1614782066,vhdl,H:/Vivado/display_driver/display_driver.srcs/sources_1/new/driver_7seg_4digits.vhd,,,hex_7seg,,,,,,,,
