@@ -33,5 +33,3 @@ entity gates is
     );
 end entity gates;
 ```
-
-![Time waveforms](asd.png)
