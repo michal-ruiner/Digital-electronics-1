@@ -34,4 +34,4 @@ entity gates is
 end entity gates;
 ```
 
-![Time waveforms](Labs/03-vivado/Images/constraints_file.png)
+![Time waveforms](Delta.BMP)
