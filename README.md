@@ -34,4 +34,4 @@ entity gates is
 end entity gates;
 ```
 
-![Time waveforms](Delta.BMP)
+![Time waveforms](asd.png)
