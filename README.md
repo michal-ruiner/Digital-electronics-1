@@ -34,4 +34,4 @@ entity gates is
 end entity gates;
 ```
 
-![Time waveforms](Labs/01-gates/Images/waveforms.PNG)
+![Time waveforms](Labs/01-gates/Images/DLtime_waveforms.PNG.PNG)
