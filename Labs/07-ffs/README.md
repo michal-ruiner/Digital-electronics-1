@@ -258,24 +258,22 @@ end process p_d_latch;
   ```
   - `p_t_ff_rst`
   ```vhdl
-    p_t_ff_rst : process (clk)
-    begin
-        if rising_edge(clk) then
-            if(rst = '1') then
-                s_q     <= '0';
-                s_q_bar <= '1';
-            else
-                if (t = '0') then
-                    s_q     <= s_q;
-                    s_q_bar <= s_q_bar;
-                elsif(t = '1') then
-                    s_q     <= not s_q;
-                    s_q_bar <= not s_q_bar;
-                end if;
-            end if;    
-        end if;
-    end process p_t_ff_rst;
+  p_t_ff_rst : process (clk)
+  begin
+      if rising_edge(clk) then
+          if(rst = '1') then
+              s_q     <= '0';
+              s_q_bar <= '1';
+          elsif (t = '0') then
+              s_q     <= s_q;
+              s_q_bar <= s_q_bar;
+          else
+              s_q     <= not s_q;
+              s_q_bar <= not s_q_bar;
+          end if;
+      end if;    
+  end process p_t_ff_rst;
 
-    q     <= s_q;
-    q_bar <= s_q_bar;
+  q     <= s_q;
+  q_bar <= s_q_bar;
   ```
