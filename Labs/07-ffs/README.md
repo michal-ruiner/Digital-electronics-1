@@ -2,7 +2,7 @@
 
 ## Preparation tasks
 
-![Driver](Equations/equations.png)
+![Equations](Images/equations.png)
 
 | **clk** | **d** | **q(n)** | **q(n+1)** | **Comments** |
 | :-: | :-: | :-: | :-: | :-- |
