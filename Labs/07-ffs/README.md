@@ -708,18 +708,18 @@ end process p_stimulus;
     end process p_stimulus;
   ```
 
-### Screenshot with simulated time waveforms
+### Screenshots with simulated time waveforms
 
-  - `d_ff_arst`
+  - `tb_d_ff_arst`
   ![d_ff_arst](Images/d_ff_arst.PNG)
 
-  - `d_ff_rst`
+  - `tb_d_ff_rst`
   ![d_ff_rst](Images/d_ff_rst.PNG)
 
-  - `jk_ff_rst`
+  - `tb_jk_ff_rst`
   ![jk_ff_rst](Images/jk_ff_rst.PNG)
 
-  - `t_ff_rst`
+  - `tb_t_ff_rst`
   ![t_ff_rst](Images/t_ff_rst.PNG)
 
 ## Shift register
