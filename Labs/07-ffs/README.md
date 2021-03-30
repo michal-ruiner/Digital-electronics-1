@@ -261,7 +261,7 @@ end process p_d_latch;
   p_t_ff_rst : process (clk)
   begin
       if rising_edge(clk) then
-          if(rst = '1') then
+          if (rst = '1') then
               s_q     <= '0';
               s_q_bar <= '1';
           elsif (t = '0') then
@@ -277,3 +277,439 @@ end process p_d_latch;
   q     <= s_q;
   q_bar <= s_q_bar;
   ```
+
+### Listing of VHDL clock, reset and stimulus processes
+
+  - `tb_d_ff_arst`
+  ```vhdl
+    --------------------------------------------------------------------
+    -- Clock generation process
+    --------------------------------------------------------------------
+    p_clk_gen : process
+    begin
+        while now < 750 ns loop         -- 75 periods of 100MHz clock
+            s_clk <= '0';
+            wait for c_CLK_100MHZ_PERIOD / 2;
+            s_clk <= '1';
+            wait for c_CLK_100MHZ_PERIOD / 2;
+        end loop;
+        wait;                           -- Process is suspended forever
+    end process p_clk_gen;
+
+    --------------------------------------------------------------------
+    -- Reset generation process
+    --------------------------------------------------------------------
+    p_reset_gen : process
+    begin
+
+        s_arst <= '0';
+        wait for 87 ns;
+
+        s_arst <= '1';
+        wait for 73 ns;
+
+        s_arst <= '0';
+        wait for 100 ns;
+
+        s_arst <= '1';
+        wait for 73 ns;
+
+        s_arst <= '0';
+        wait for 112 ns;
+        s_arst <= '1';
+        wait for 13 ns;
+        s_arst <= '0';
+        wait for 94 ns;
+
+        s_arst <= '1';
+        wait for 73 ns;
+
+        s_arst <= '0';
+        wait;       
+
+    end process p_reset_gen;
+
+    --------------------------------------------------------------------
+    -- Data generation process
+    --------------------------------------------------------------------
+    p_stimulus : process
+    begin
+        report "Stimulus process started" severity note;
+
+        s_d <= '0';
+        wait for 48 ns;
+        s_d <= '1';
+        wait for 50 ns;
+        s_d <= '0';
+        wait for 50 ns;
+        s_d <= '1';
+        wait for 50 ns;
+        -- 198 ns
+
+        s_d <= '0';
+        wait for 2 ns;
+        assert(s_d='0' and s_arst='0' and s_q='1' and s_q_bar='0')
+        report "Test failed for input 0 before rising edge" severity error;
+        wait for 46 ns;
+        s_d <= '1';
+        wait for 2 ns;
+        assert(s_d='1' and s_arst='0' and s_q='0' and s_q_bar='1')
+        report "Test failed for input 1 before rising edge" severity error;
+        wait for 48 ns;
+        s_d <= '0';
+        wait for 50 ns;
+        s_d <= '1';
+        wait for 50 ns;
+        --396 ns
+
+        s_d <= '0';
+        wait for 49 ns;
+        s_d <= '1';
+        wait for 5 ns;
+        assert(s_d='1' and s_arst='1' and s_q='0' and s_q_bar='1')
+        report "Test failed for reset value 1 after rising edge" severity error;
+        wait for 45 ns;
+        s_d <= '0';
+        wait for 50 ns;
+        s_d <= '1';
+        wait for 50 ns;
+        -- 595 ns
+
+        s_d <= '0';
+        wait for 48 ns;
+        s_d <= '1';
+        wait for 50 ns;
+        s_d <= '0';
+        wait for 50 ns;
+        s_d <= '1';
+        wait for 50 ns;
+
+        report "Stimulus process finished" severity note;
+        wait;
+    end process p_stimulus;
+  ```
+
+  - `tb_d_ff_rst`
+  ```vhdl
+    --------------------------------------------------------------------
+    -- Clock generation process
+    --------------------------------------------------------------------
+    p_clk_gen : process
+    begin
+        while now < 750 ns loop         -- 75 periods of 100MHz clock
+            s_clk <= '0';
+            wait for c_CLK_100MHZ_PERIOD / 2;
+            s_clk <= '1';
+            wait for c_CLK_100MHZ_PERIOD / 2;
+        end loop;
+        wait;                           -- Process is suspended forever
+    end process p_clk_gen;
+
+    --------------------------------------------------------------------
+    -- Reset generation process
+    --------------------------------------------------------------------
+    p_reset_gen : process
+    begin
+
+        s_rst <= '0';
+        wait for 87 ns;
+
+        s_rst <= '1';
+        wait for 73 ns;
+
+        s_rst <= '0';
+        wait for 105 ns;
+
+        s_rst <= '1';
+        wait for 73 ns;
+
+        s_rst <= '0';
+        wait for 219 ns;
+
+        s_rst <= '1';
+        wait for 73 ns;
+
+        s_rst <= '0';
+        wait;      
+
+    end process p_reset_gen;
+
+    --------------------------------------------------------------------
+    -- Data generation process
+    --------------------------------------------------------------------
+    p_stimulus : process
+    begin
+        report "Stimulus process started" severity note;
+
+        s_d <= '0';
+        wait for 48 ns;
+        s_d <= '1';
+        wait for 2 ns;
+        assert(s_d = '1' and s_rst = '0' and s_q = '0' and s_q_bar = '1')
+        report "Test failed for input 1 before rising edge" severity error;
+        wait for 48 ns;
+        s_d <= '0';
+        wait for 50 ns;
+        s_d <= '1';
+        wait for 50 ns;
+        -- 198 ns
+
+        s_d <= '0';
+        wait for 48 ns;
+        s_d <= '1';
+        wait for 22 ns;
+        assert(s_d = '1' and s_rst = '1' and s_q = '0' and s_q_bar = '1')
+        report "Test failed for reset 1 after rising edge" severity error;
+        wait for 28 ns;
+        s_d <= '0';
+        wait for 50 ns;
+        s_d <= '1';
+        wait for 50 ns;
+        --396 ns
+
+        s_d <= '0';
+        wait for 49 ns;
+        s_d <= '1';
+        wait for 50 ns;
+        s_d <= '0';
+        wait for 50 ns;
+        s_d <= '1';
+        wait for 15 ns;
+        assert(s_d = '1' and s_rst = '1' and s_q = '1' and s_q_bar = '0')
+        report "Test failed for reset 1 before rising edge" severity error;
+        wait for 35 ns;
+        -- 594 ns
+
+        s_d <= '0';
+        wait for 48 ns;
+        s_d <= '1';
+        wait for 50 ns;
+        s_d <= '0';
+        wait for 50 ns;
+        s_d <= '1';
+        wait for 50 ns;
+
+        report "Stimulus process finished" severity note;
+        wait;
+    end process p_stimulus;
+  ```
+
+  - `tb_jk_ff_rst`
+  ```vhdl
+    --------------------------------------------------------------------
+    -- Clock generation process
+    --------------------------------------------------------------------
+    p_clk_gen : process
+    begin
+        while now < 750 ns loop         -- 75 periods of 100MHz clock
+            s_clk <= '0';
+            wait for c_CLK_100MHZ_PERIOD / 2;
+            s_clk <= '1';
+            wait for c_CLK_100MHZ_PERIOD / 2;
+        end loop;
+        wait;                           -- Process is suspended forever
+    end process p_clk_gen;
+
+    --------------------------------------------------------------------
+    -- Reset generation process
+    --------------------------------------------------------------------
+    p_reset_gen : process
+    begin    
+
+        s_rst <= '0';
+        wait for 12 ns;
+
+        s_rst <= '1';
+        wait for 20 ns;
+
+        s_rst <= '0';
+        wait for 58 ns;
+
+        s_rst <= '1';
+        wait for 34 ns;
+
+        s_rst <= '0';
+        wait for 231 ns;
+
+        s_rst <= '1';
+        wait for 34 ns;
+
+        s_rst <= '0';
+        wait for 240 ns;
+
+        s_rst <= '1';
+        wait for 42 ns;
+
+        s_rst <= '0';
+
+        wait;
+
+    end process p_reset_gen;
+
+    --------------------------------------------------------------------
+    -- Data generation process
+    --------------------------------------------------------------------
+    p_stimulus : process
+    begin
+        report "Stimulus process started" severity note;
+
+        s_j <= '0';
+        s_k <= '0';
+        wait for 80 ns;
+        assert(s_j = '0' and s_k = '0' and s_rst = '0' and s_q = '0' and s_q_bar = '1')
+        report "Test failed for input values s_j = 0 and s_k = 0 after reset" severity error;
+
+        s_j <= '1';
+        s_k <= '0';
+        wait for 10 ns;
+        assert(s_j = '1' and s_k = '0' and s_rst = '0' and s_q = '1' and s_q_bar = '0')
+        report "Test failed for input values s_j = 1 and s_k = 0 after rising edge" severity error;
+        wait for 70 ns;
+
+        s_j <= '0';
+        s_k <= '1';
+        wait for 2 ns;
+        assert(s_j = '0' and s_k = '1' and s_rst = '0' and s_q = '1' and s_q_bar = '0')
+        report "Test failed for input values s_j = 0 and s_k = 1 before rising edge" severity error;
+        wait for 43 ns;
+
+        s_j <= '1';
+        s_k <= '1';
+        wait for 50 ns;
+        assert(s_j = '1' and s_k = '1' and s_rst = '0' and s_q = '1' and s_q_bar = '0')
+        report "Test failed for input values s_j = 1 and s_k = 1" severity error;
+        wait for 55 ns;
+
+        s_j <= '0';
+        s_k <= '0';
+        wait for 50 ns;
+        assert(s_j = '0' and s_k = '0' and s_rst = '1' and s_q = '0' and s_q_bar = '1')
+        report "Test failed for input values s_j = 0 and s_k = 0 and reset 1 after rising edge" severity error;
+        wait for 50 ns;
+
+        s_j <= '1';
+        s_k <= '0';
+        wait for 100 ns;
+
+        s_j <= '0';
+        s_k <= '1';
+        wait for 70 ns;     
+
+        s_j <= '1';
+        s_k <= '1';
+        wait for 100 ns;
+
+        report "Stimulus process finished" severity note;
+        wait;
+    end process p_stimulus;
+  ```
+
+  - `tb_t_ff_rst`
+  ```vhdl
+    --------------------------------------------------------------------
+    -- Clock generation process
+    --------------------------------------------------------------------
+    p_clk_gen : process
+    begin
+        while now < 750 ns loop         -- 75 periods of 100MHz clock
+            s_clk <= '0';
+            wait for c_CLK_100MHZ_PERIOD / 2;
+            s_clk <= '1';
+            wait for c_CLK_100MHZ_PERIOD / 2;
+        end loop;
+        wait;                           -- Process is suspended forever
+    end process p_clk_gen;
+
+    --------------------------------------------------------------------
+    -- Reset generation process
+    --------------------------------------------------------------------
+    p_reset_gen : process
+    begin    
+
+        s_rst <= '0';
+        wait for 12 ns;
+
+        s_rst <= '1';
+        wait for 20 ns;
+
+        s_rst <= '0';
+        wait for 68 ns;
+
+        s_rst <= '1';
+        wait for 34 ns;
+
+        s_rst <= '0';
+        wait for 246 ns;
+
+        s_rst <= '1';
+        wait for 34 ns;
+
+        s_rst <= '0';
+        wait for 225 ns;
+
+        -- ideálně od 639 ns
+        s_rst <= '1';
+        wait for 42 ns;
+
+        s_rst <= '0';
+
+        wait;
+
+    end process p_reset_gen;
+
+    --------------------------------------------------------------------
+    -- Data generation process
+    --------------------------------------------------------------------
+    p_stimulus : process
+    begin
+        report "Stimulus process started" severity note;
+
+        s_t <= '0';
+        wait for 50 ns;
+        assert(s_t = '0' and s_rst = '0' and s_q = '0' and s_q_bar = '1')
+        report "Test failed for value s_t = 0 after reset" severity error;
+        s_t <= '1';
+        wait for 5 ns;
+        assert(s_t = '1' and s_rst = '0' and s_q = '0' and s_q_bar = '1')
+        report "Test failed for value s_t = 1 before rising edge" severity error;
+        wait for 70 ns;
+        assert(s_t = '1' and s_rst = '1' and s_q = '0' and s_q_bar = '1')
+        report "Test failed for value s_t = 1 after reset" severity error;
+        wait for 35 ns;
+
+        s_t <= '0';
+        wait for 100 ns;
+        s_t <= '1';
+        wait for 100 ns;
+
+        s_t <= '0';
+        wait for 23 ns;
+        assert(s_t = '0' and s_rst = '1' and s_q = '1' and s_q_bar = '0')
+        report "Test failed for reset 1 before rising edge" severity error;
+        wait for 77 ns;
+        s_t <= '1';
+        wait for 100 ns;
+
+        s_t <= '0';
+        wait for 100 ns;
+        s_t <= '1';
+        wait for 100 ns;
+
+        report "Stimulus process finished" severity note;
+        wait;
+    end process p_stimulus;
+  ```
+
+### Screenshot with simulated time waveforms
+
+  - `d_ff_arst`
+  ![d_ff_arst](Images/d_ff_arst.PNG)
+
+  - `d_ff_rst`
+  ![d_ff_rst](Images/d_ff_rst.PNG)
+
+  - `jk_ff_rst`
+  ![jk_ff_rst](Images/jk_ff_rst.PNG)
+
+  - `t_ff_rst`
+  ![t_ff_rst](Images/t_ff_rst.PNG)
