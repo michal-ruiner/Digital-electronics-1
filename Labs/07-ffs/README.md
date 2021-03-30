@@ -713,3 +713,7 @@ end process p_d_latch;
 
   - `t_ff_rst`
   ![t_ff_rst](Images/t_ff_rst.PNG)
+
+## Shift register
+
+![Shift_register](Images/shift_register.PNG)
