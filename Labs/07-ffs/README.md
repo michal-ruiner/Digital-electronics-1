@@ -49,151 +49,154 @@ end process p_d_latch;
 ### Listing of VHDL reset and stimulus processes from the testbench `tb_d_latch.vhd`
 
 ```vhdl
-    --------------------------------------------------------------------
-    -- Reset generation process
-    --------------------------------------------------------------------
-    p_reset_gen : process
-    begin
+--------------------------------------------------------------------
+-- Reset generation process
+--------------------------------------------------------------------
+p_reset_gen : process
+begin
 
-        s_arst <= '0';
-        wait for 50 ns;
+    s_arst <= '0';
+    wait for 50 ns;
 
-        s_arst <= '1';
-        wait for 60 ns;
-        assert(s_q = '0' and s_q_bar = '1')
-        report "Test failed for reset value 1" severity error;
+    s_arst <= '1';
+    wait for 60 ns;
+    assert(s_q = '0' and s_q_bar = '1')
+    report "Test failed for reset value 1" severity error;
 
-        s_arst <= '0';
-        wait for 100 ns;
-        assert(s_q = '1' and s_q_bar = '0')
-        report "Test failed for reset value 0" severity error;
+    s_arst <= '0';
+    wait for 100 ns;
+    assert(s_q = '1' and s_q_bar = '0')
+    report "Test failed for reset value 0" severity error;
 
-        s_arst <= '1';
-        wait for 53 ns;
-        assert(s_q = '0' and s_q_bar = '1')
-        report "Test failed for reset value 1" severity error;
+    s_arst <= '1';
+    wait for 53 ns;
+    assert(s_q = '0' and s_q_bar = '1')
+    report "Test failed for reset value 1" severity error;
 
-        s_arst <= '0';
-        wait for 74 ns;
-        assert(s_q = s_d and s_q_bar = (not s_d))
-        report "Test failed for reset value 0" severity error;
+    s_arst <= '0';
+    wait for 74 ns;
+    assert(s_q = s_d and s_q_bar = (not s_d))
+    report "Test failed for reset value 0" severity error;
 
-        s_arst <= '1';
-        wait for 53 ns;
-        assert(s_q = '0' and s_q_bar = '1')
-        report "Test failed for reset value 1" severity error;
+    s_arst <= '1';
+    wait for 53 ns;
+    assert(s_q = '0' and s_q_bar = '1')
+    report "Test failed for reset value 1" severity error;
 
-        s_arst <= '0';
-        wait for 300 ns;
-        assert(s_q = s_d and s_q_bar = (not s_d))
-        report "Test failed for reset value 0" severity error;
+    s_arst <= '0';
+    wait for 300 ns;
+    assert(s_q = s_d and s_q_bar = (not s_d))
+    report "Test failed for reset value 0" severity error;
 
-        s_arst <= '1';
-        wait for 53 ns;
-        assert(s_q = '0' and s_q_bar = '1')
-        report "Test failed for reset value 1" severity error;
+    s_arst <= '1';
+    wait for 53 ns;
+    assert(s_q = '0' and s_q_bar = '1')
+    report "Test failed for reset value 1" severity error;
 
-        s_arst <= '0';
-        wait;
+    s_arst <= '0';
+    wait;
 
-    end process p_reset_gen;
+end process p_reset_gen;
 
-    --------------------------------------------------------------------
-    -- Data generation process
-    --------------------------------------------------------------------
-    p_stimulus : process
-    begin
-        report "Stimulus process started" severity note;
+--------------------------------------------------------------------
+-- Data generation process
+--------------------------------------------------------------------
+p_stimulus : process
+begin
+    report "Stimulus process started" severity note;
 
-        s_d  <= '0';
-        s_en <= '0';
+    s_d  <= '0';
+    s_en <= '0';
 
-        --d sekv
-        wait for 25 ns;
-        s_d <= '1';
-        wait for 25 ns;
-        s_d <= '0';
-        wait for 25 ns;
-        s_d <= '1';
-        wait for 25 ns;
-        s_d <= '0';
-        assert(s_arst = '1' and s_en = '0' and s_d = '1' and s_q = '0' and s_q_bar = '1')
-        report "Test failed for values reset=1, enable 0, s_d=1, s_q=)" severity error;
+    --d sekv
+    wait for 25 ns;
+    s_d <= '1';
+    wait for 25 ns;
+    s_d <= '0';
+    wait for 25 ns;
+    s_d <= '1';
+    wait for 25 ns;
+    s_d <= '0';
+    assert(s_arst = '1' and s_en = '0' and s_d = '1' and s_q = '0' and s_q_bar = '1')
+    report "Test failed for values reset=1, enable 0, s_d=1, s_q=)" severity error;
 
-        s_en <= '1';
+    s_en <= '1';
 
-        --d sekv
-        wait for 25 ns;
-        s_d <= '1';
-        wait for 25 ns;
-        assert(s_arst = '0' and s_en = '1' and s_d = '1' and s_q = '1' and s_q_bar = '0')
-        report "Test failed for values reset=0, enable 1, s_d=1, s_q=1" severity error;
-        s_d <= '0';
-        wait for 25 ns;
-        s_d <= '1';
-        wait for 25 ns;
-        s_d <= '0';
+    --d sekv
+    wait for 25 ns;
+    s_d <= '1';
+    wait for 25 ns;
+    assert(s_arst = '0' and s_en = '1' and s_d = '1' and s_q = '1' and s_q_bar = '0')
+    report "Test failed for values reset=0, enable 1, s_d=1, s_q=1" severity error;
+    s_d <= '0';
+    wait for 25 ns;
+    s_d <= '1';
+    wait for 25 ns;
+    s_d <= '0';
 
-        s_en <= '0';
+    s_en <= '0';
 
-        --d sekv
-        wait for 10 ns;
-        assert(s_arst = '0' and s_en = '0' and s_d = '0' and s_q = '1' and s_q_bar = '0')
-        report "Test failed for values reset=0, enable 0, s_d=0, s_q=1" severity error;
-        wait for 15 ns;
-        s_d <= '1';
-        wait for 25 ns;
-        assert(s_arst = '1' and s_en = '0' and s_d = '1' and s_q = '0' and s_q_bar = '1')
-        report "Test failed for values reset=1, enable 0, s_d=1, s_q=0" severity error;
-        s_d <= '0';
-        wait for 25 ns;
-        s_d <= '1';
-        wait for 25 ns;
-        s_d <= '0';
+    --d sekv
+    wait for 10 ns;
+    assert(s_arst = '0' and s_en = '0' and s_d = '0' and s_q = '1' and s_q_bar = '0')
+    report "Test failed for values reset=0, enable 0, s_d=0, s_q=1" severity error;
+    wait for 15 ns;
+    s_d <= '1';
+    wait for 25 ns;
+    assert(s_arst = '1' and s_en = '0' and s_d = '1' and s_q = '0' and s_q_bar = '1')
+    report "Test failed for values reset=1, enable 0, s_d=1, s_q=0" severity error;
+    s_d <= '0';
+    wait for 25 ns;
+    s_d <= '1';
+    wait for 25 ns;
+    s_d <= '0';
 
-        s_en <= '1';
+    s_en <= '1';
 
-        --d sekv
-        wait for 25 ns;
-        s_d <= '1';
-        wait for 25 ns;
-        assert(s_arst = '1' and s_en = '1' and s_d = '1' and s_q = '0' and s_q_bar = '1')
-        report "Test failed for values reset=1, enable 1, s_d=1, s_q=0" severity error;
-        s_d <= '0';
-        wait for 25 ns;
-        s_d <= '1';
-        wait for 25 ns;
-        s_d <= '0';
+    --d sekv
+    wait for 25 ns;
+    s_d <= '1';
+    wait for 25 ns;
+    assert(s_arst = '1' and s_en = '1' and s_d = '1' and s_q = '0' and s_q_bar = '1')
+    report "Test failed for values reset=1, enable 1, s_d=1, s_q=0" severity error;
+    s_d <= '0';
+    wait for 25 ns;
+    s_d <= '1';
+    wait for 25 ns;
+    s_d <= '0';
 
-         --d sekv
-        wait for 25 ns;
-        s_d <= '1';
-        wait for 25 ns;
-        s_d <= '0';
-        wait for 25 ns;
-        s_d <= '1';
-        wait for 25 ns;
-        s_d <= '0';
+     --d sekv
+    wait for 3 ns;
+    assert(s_arst = '0' and s_en = '1' and s_d = '0' and s_q = '0' and s_q_bar = '1')
+    report "Test failed for values reset=0, enable 1, s_d=0, s_q=0" severity error;
+    wait for 22 ns;
+    s_d <= '1';
+    wait for 25 ns;
+    s_d <= '0';
+    wait for 25 ns;
+    s_d <= '1';
+    wait for 25 ns;
+    s_d <= '0';
 
-        s_en <= '0';
+    s_en <= '0';
 
-        wait for 100 ns;
+    wait for 100 ns;
 
-        s_en <= '1';
+    s_en <= '1';
 
-         --d sekv
-        wait for 25 ns;
-        s_d <= '1';
-        wait for 25 ns;
-        s_d <= '0';
-        wait for 25 ns;
-        s_d <= '1';
-        wait for 25 ns;
-        s_d <= '0';
+     --d sekv
+    wait for 25 ns;
+    s_d <= '1';
+    wait for 25 ns;
+    s_d <= '0';
+    wait for 25 ns;
+    s_d <= '1';
+    wait for 25 ns;
+    s_d <= '0';
 
-        report "Stimulus process finished" severity note;
-        wait;
-    end process p_stimulus;
+    report "Stimulus process finished" severity note;
+    wait;
+end process p_stimulus;
 ```
 
 ### Screenshot with simulated time waveforms
