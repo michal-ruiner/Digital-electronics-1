@@ -118,7 +118,7 @@ begin
     wait for 25 ns;
     s_d <= '0';
     assert(s_arst = '1' and s_en = '0' and s_d = '1' and s_q = '0' and s_q_bar = '1')
-    report "Test failed for values reset=1, enable 0, s_d=1, s_q=0)" severity error;
+    report "Test failed for values reset=1, enable 0, s_d=1, s_q=0" severity error;
 
     s_en <= '1';
 
