@@ -293,8 +293,6 @@
                     when others =>
                         -- Move to the next state
                         s_state <= STOP1;
-                        -- Reset local counter value
-                        s_cnt   <= c_ZERO;
 
                 end case;
             end if; -- Synchronous reset
