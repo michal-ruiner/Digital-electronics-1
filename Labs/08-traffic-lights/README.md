@@ -211,18 +211,13 @@
                         -- Count up to c_DELAY_1SEC
                         if(s_cnt < c_DELAY_1SEC) then
                             s_cnt <= s_cnt + 1;
-                        elsif((sensor_s = '0' and sensor_w = '1') or (sensor_s = '1' and sensor_w = '1')) then
-                            -- Move to the next state
-                            s_state <= WEST_GO;
-                            -- Reset local counter value
-                            s_cnt   <= c_ZERO;
                         elsif(sensor_s = '1' and sensor_w = '0') then
                             -- Move to the next state
                             s_state <= SOUTH_GO;
                             -- Reset local counter value
                             s_cnt   <= c_ZERO;
                         else
-                            s_state <= STOP1;
+                            s_state <= WEST_GO;
                         end if;
 
                     when WEST_GO =>
@@ -253,18 +248,13 @@
                         -- Count up to c_DELAY_1SEC
                         if (s_cnt < c_DELAY_1SEC) then
                             s_cnt <= s_cnt + 1;
-                        elsif((sensor_s = '1' and sensor_w = '0') or (sensor_s = '1' and sensor_w = '1')) then
-                            -- Move to the next state
-                            s_state <= SOUTH_GO;
-                            -- Reset local counter value
-                            s_cnt   <= c_ZERO;
                         elsif(sensor_s = '0' and sensor_w = '1') then
                             -- Move to the next state
                             s_state <= WEST_GO;
                             -- Reset local counter value
                             s_cnt   <= c_ZERO;
                         else
-                            s_state <= STOP2;
+                            s_state <= SOUTH_GO;
                         end if;
 
                     when SOUTH_GO =>
