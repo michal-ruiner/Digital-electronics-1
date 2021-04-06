@@ -180,7 +180,7 @@
 
 ### State table
 
-| | | | | Next | State | depending on | Inputs |
+|  |  |  |  | Next | State | depending on | Inputs |
 | **Current state** | **Direction South** | **Direction West** | **Delay** | **No Cars (00)** | **Cars to West (01)** | **Cars to South (10)** | **Cars Both Directions (11)** |
 | :-- | :-: | :-: | :-: | :-- | :-: | :-: | :-: |
 | `SOUTH_GO`    | red    | red    | 3 sec    | `SOUTH_GO` | `SOUTH_WAIT` | `SOUTH_GO` | `SOUTH_WAIT` |
