@@ -208,6 +208,7 @@
 
             elsif (s_en = '1') then
                 case s_state is
+
                     when SOUTH_GO =>
                         if (s_cnt < c_DELAY_3SEC) then
                             s_cnt <= s_cnt + 1;
