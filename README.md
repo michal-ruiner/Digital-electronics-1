@@ -14,7 +14,7 @@ Tento repozitář *Digitální elektronika* je určen pro **všechny soubory** t
 [BPC-DE1](https://moodle.vutbr.cz/course/view.php?id=224131)
 
 ## Tabulka OR
-   a    | f(a,b)
+ a |  b | f(a,b)
 -- | -- | --
 0 | 0 | 0
 0 | 1 | 1
