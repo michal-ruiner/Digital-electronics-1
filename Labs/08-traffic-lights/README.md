@@ -217,7 +217,10 @@
                             -- Reset local counter value
                             s_cnt   <= c_ZERO;
                         else
+                            -- Move to the next state
                             s_state <= WEST_GO;
+                            -- Reset local counter value
+                            s_cnt   <= c_ZERO;
                         end if;
 
                     when WEST_GO =>
@@ -231,6 +234,8 @@
                             s_cnt   <= c_ZERO;
                         else
                             s_state <= WEST_GO;
+                            -- Reset local counter value
+                            s_cnt   <= c_ZERO;
                         end if;
 
                     when WEST_WAIT =>
@@ -254,7 +259,10 @@
                             -- Reset local counter value
                             s_cnt   <= c_ZERO;
                         else
+                            -- Move to the next state
                             s_state <= SOUTH_GO;
+                            -- Reset local counter value
+                            s_cnt   <= c_ZERO;
                         end if;
 
                     when SOUTH_GO =>
@@ -268,6 +276,8 @@
                             s_cnt   <= c_ZERO;
                         else
                             s_state <= SOUTH_GO;
+                            -- Reset local counter value
+                            s_cnt   <= c_ZERO;
                         end if;
 
                     when SOUTH_WAIT =>
@@ -281,7 +291,10 @@
                             s_cnt   <= c_ZERO;
                         end if;       
                     when others =>
+                        -- Move to the next state
                         s_state <= STOP1;
+                        -- Reset local counter value
+                        s_cnt   <= c_ZERO;
 
                 end case;
             end if; -- Synchronous reset
