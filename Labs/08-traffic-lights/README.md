@@ -183,10 +183,10 @@
 | **Current state** | **Direction South** | **Direction West** | **Delay** | **No Cars (00)** | **Cars to West (01)** | **Cars to South (10)** | **Cars Both Directions (11)** |
 | :-- | :-: | :-: | :-: | :-- | :-: | :-: | :-: |
 | | | | | Next | State | depending on | Inputs |
-| `SOUTH_GO`    | red    | red    | 3 sec    | `SOUTH_GO` | `SOUTH_WAIT` | `SOUTH_GO` | `SOUTH_WAIT` |
-| `SOUTH_WAIT`  | red    | green  | 0,5 sec  | `WEST_GO` | `WEST_GO` | `WEST_GO` | `WEST_GO` |
-| `WEST_GO`     | red    | yellow | 3 sec    | `WEST_GO` | `WEST_GO` | `WEST_WAIT` | `WEST_WAIT` |
-| `WEST_WAIT`   | red    | red    | 0,5 sec  | `SOUTH_GO` | `SOUTH_GO` | `SOUTH_GO` | `SOUTH_GO` |
+| `SOUTH_GO`    | green    | red    | 3 sec    | `SOUTH_GO` | `SOUTH_WAIT` | `SOUTH_GO` | `SOUTH_WAIT` |
+| `SOUTH_WAIT`  | yellow    | red  | 0,5 sec  | `WEST_GO` | `WEST_GO` | `WEST_GO` | `WEST_GO` |
+| `WEST_GO`     | red    | green | 3 sec    | `WEST_GO` | `WEST_GO` | `WEST_WAIT` | `WEST_WAIT` |
+| `WEST_WAIT`   | red    | yellow    | 0,5 sec  | `SOUTH_GO` | `SOUTH_GO` | `SOUTH_GO` | `SOUTH_GO` |
 
 ### State diagram
 
